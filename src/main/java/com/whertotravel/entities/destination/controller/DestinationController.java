@@ -1,12 +1,14 @@
 package com.whertotravel.entities.destination.controller;
 
 import com.whertotravel.config.Config;
-import com.whertotravel.entities.destination.models.DestinationCreateRequestDTO;
-import com.whertotravel.entities.destination.models.DestinationResponseData;
+import com.whertotravel.entities.destination.models.DestinationResponseDTO;
 import com.whertotravel.entities.destination.service.DestinationService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(Config.API_V_1 + "destination")
@@ -18,12 +20,16 @@ public class DestinationController {
   }
 
   @PostMapping
-  ResponseEntity<String> saveDestination(@RequestBody DestinationCreateRequestDTO destinationCreateRequestDTO, HttpServletRequest request) {
-    return destinationService.saveDestination(destinationCreateRequestDTO, request);
+  ResponseEntity<String> saveDestination(
+    @RequestParam String description,
+    @RequestParam String title,
+    @RequestParam MultipartFile[] images
+    , HttpServletRequest request) {
+    return destinationService.saveDestination(description, title, images, request);
   }
 
   @GetMapping("/all")
-  ResponseEntity<DestinationResponseData> getAll() {
+  ResponseEntity<List<DestinationResponseDTO>> getAll() {
     return destinationService.getAll();
   }
 }

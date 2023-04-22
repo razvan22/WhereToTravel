@@ -20,8 +20,9 @@ public class SecurityConfig {
       .httpBasic().and()
       .authorizeHttpRequests(authorize ->
         authorize.requestMatchers(Config.API_V_1 + "user").permitAll()
-          .requestMatchers(Config.API_V_1 + "destination").permitAll()
+          .requestMatchers(Config.API_V_1 + "destination").authenticated()
           .requestMatchers(Config.API_V_1 + "destination/all").permitAll()
+          .requestMatchers("/images/**").permitAll()
           .requestMatchers(Config.API_V_1 + "user/all").authenticated()
           .requestMatchers("db").denyAll()
       );

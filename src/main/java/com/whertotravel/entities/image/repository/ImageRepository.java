@@ -1,9 +1,13 @@
 package com.whertotravel.entities.image.repository;
 
+
 import com.whertotravel.entities.image.model.Image;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.UUID;
 
-public interface ImageRepository extends CrudRepository<Image, UUID> {
+@Repository
+public interface ImageRepository extends JpaRepository<Image, UUID> {
+
 }

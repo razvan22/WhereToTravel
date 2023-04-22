@@ -1,20 +1,20 @@
 package com.whertotravel.entities.image.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.whertotravel.entities.destination.models.Destination;
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
 @Entity
+@NoArgsConstructor
 @Data
 public class Image {
   @Id
   @GeneratedValue(strategy = GenerationType.UUID)
   private UUID id;
   private String imagePath;
-  @ManyToOne
-  @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-  private Destination destination;
 }

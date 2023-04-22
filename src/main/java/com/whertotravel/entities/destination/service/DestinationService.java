@@ -1,12 +1,14 @@
 package com.whertotravel.entities.destination.service;
 
-import com.whertotravel.entities.destination.models.DestinationCreateRequestDTO;
-import com.whertotravel.entities.destination.models.DestinationResponseData;
+import com.whertotravel.entities.destination.models.DestinationResponseDTO;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 public interface DestinationService {
-  ResponseEntity<String> saveDestination(DestinationCreateRequestDTO destinationCreateRequestDTO, HttpServletRequest request);
+  ResponseEntity<String> saveDestination(String description, String title, MultipartFile[] images, HttpServletRequest request);
 
-  ResponseEntity<DestinationResponseData> getAll();
+  ResponseEntity<List<DestinationResponseDTO>> getAll();
 }
