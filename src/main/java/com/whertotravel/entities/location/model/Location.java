@@ -1,4 +1,10 @@
 package com.whertotravel.entities.location.model;
 
-public class Location {
-}
+//@Entity
+//@Data
+//public class Location {
+//  @Id
+//  @GeneratedValue(strategy = GenerationType.UUID)
+//  UUID id;
+//  String desciption;
+//}
