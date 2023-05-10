@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class DestinationServiceImpl implements DestinationService {
@@ -59,6 +60,13 @@ public class DestinationServiceImpl implements DestinationService {
     var dataDTO = data.stream().map(destinationMapper::destinationToResponse).toList();
 
     return new ResponseEntity<>(dataDTO, HttpStatus.OK);
+  }
+
+  @Override
+  public ResponseEntity<DestinationResponseDTO> findById(UUID id) {
+    return destinationRepository.findById(id)
+      .map(value -> new ResponseEntity<>(destinationMapper.destinationToResponse(value), HttpStatus.OK))
+      .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
   }
 
   private List<Image> saveImages(MultipartFile[] images) {

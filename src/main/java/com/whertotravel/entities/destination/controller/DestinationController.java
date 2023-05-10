@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping(Config.API_V_1 + "destination")
@@ -31,5 +32,10 @@ public class DestinationController {
   @GetMapping("/all")
   ResponseEntity<List<DestinationResponseDTO>> getAll() {
     return destinationService.getAll();
+  }
+
+  @GetMapping("/{id}")
+  ResponseEntity<DestinationResponseDTO> findById(@PathVariable UUID id) {
+    return destinationService.findById(id);
   }
 }
