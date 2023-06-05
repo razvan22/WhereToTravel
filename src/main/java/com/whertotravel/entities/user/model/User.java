@@ -1,7 +1,7 @@
 package com.whertotravel.entities.user.model;
 
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.whertotravel.entities.destination.models.Destination;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -22,7 +22,7 @@ public class User {
   @Id
   @GeneratedValue(strategy = GenerationType.UUID)
   private UUID id;
-  @JsonManagedReference
+  @JsonIgnore
   @OneToMany(mappedBy = "author")
   private List<Destination> destinations;
   private String firstname;
